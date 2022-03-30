@@ -1,0 +1,100 @@
+@page
+@model Bowler.Pages.IndexModel
+
+@{ ViewData["Title"] = "Bowlers"; }
+
+<div class="dropdown float-right">
+    <br />
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Filter By Team
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" asp-route-id="0" asp-page="./Index">All Teams</a>
+        <a class="dropdown-item" asp-route-id="1" asp-page="./Index">Marlins</a>
+        <a class="dropdown-item" asp-route-id="2" asp-page="./Index">Sharks</a>
+        <a class="dropdown-item" asp-route-id="3" asp-page="./Index">Terrapins</a>
+        <a class="dropdown-item" asp-route-id="4" asp-page="./Index">Barracudas</a>
+        <a class="dropdown-item" asp-route-id="5" asp-page="./Index">Dolphins</a>
+        <a class="dropdown-item" asp-route-id="6" asp-page="./Index">Orcas</a>
+        <a class="dropdown-item" asp-route-id="7" asp-page="./Index">Manatees</a>
+        <a class="dropdown-item" asp-route-id="8" asp-page="./Index">Swordfish</a>
+        <a class="dropdown-item" asp-route-id="9" asp-page="./Index">Huckleberrys</a>
+        <a class="dropdown-item" asp-route-id="10" asp-page="./Index">MintJuleps</a>
+    </div>
+</div>
+@if (Model.teamID == 0)
+{
+    <h1 class="display-4">Bowlers</h1>
+}
+else
+{
+    <h1 class="display-4">Bowlers on the @Html.DisplayFor(m => m.Bowlers[0].Team.TeamName)</h1>
+}
+
+
+<p>
+    <a asp-page="Create">Add New Bowler</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Last
+            </th>
+            <th>
+                First
+            </th>
+            <th>
+                Middle
+            </th>
+            <th>
+                Address
+            </th>
+            <th>
+                Phone
+            </th>
+            <th>
+                Team
+            </th>
+            <th>
+                Options
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Bowlers)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.BowlerLastName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BowlerFirstName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BowlerMiddleInit)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BowlerAddress)
+        @Html.DisplayFor(modelItem => item.BowlerCity),
+        @Html.DisplayFor(modelItem => item.BowlerState)
+        @Html.DisplayFor(modelItem => item.BowlerZip)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.BowlerPhoneNumber)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Team.TeamName)
+    </td>
+    <td>
+        <a class="btn btn-warning" asp-page="./Edit" asp-route-id="@item.BowlerID"><i class="bi bi-pencil"></i></a>
+        <a class="btn btn-primary" asp-page="./Details" asp-route-id="@item.BowlerID">Details</a>
+        <a class="btn btn-danger" asp-page="./Delete" asp-route-id="@item.BowlerID"><i class="bi bi-trash"></i></a>
+    </td>
+</tr>
+}
+    </tbody>
+</table>
+
+
+

@@ -1,0 +1,75 @@
+@page
+@model Bowler.Pages.DeleteModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1 class="display-4">Delete Bowler</h1>
+
+<h3>Are you sure you want to remove this Bowler?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Last Name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bowlers.BowlerLastName)
+        </dd>
+        <dt class="col-sm-2">
+            First Name
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bowlers.BowlerFirstName)
+        </dd>
+        <dt class="col-sm-2">
+            Middle Initial
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bowlers.BowlerMiddleInit)
+        </dd>
+        <dt class="col-sm-2">
+            Address
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bowlers.BowlerAddress)
+        </dd>
+        <dt class="col-sm-2">
+            City
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bowlers.BowlerCity)
+        </dd>
+        <dt class="col-sm-2">
+            State
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bowlers.BowlerState)
+        </dd>
+        <dt class="col-sm-2">
+            Zip
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bowlers.BowlerZip)
+        </dd>
+        <dt class="col-sm-2">
+            Phone Number
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bowlers.BowlerPhoneNumber)
+        </dd>
+        <dt class="col-sm-2">
+            Team
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Bowlers.Team.TeamName)
+        </dd>
+    </dl>
+    
+    <form method="post">
+        <input type="hidden" asp-for="Bowlers.BowlerID" />
+        <input type="submit" value="Delete" class="btn btn-danger" /><br />
+        <a asp-page="./Index">Back to List</a>
+    </form>
+</div>
